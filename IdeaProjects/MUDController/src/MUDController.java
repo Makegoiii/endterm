@@ -6,15 +6,15 @@ public class MUDController {
     private boolean running;
     private final Scanner scanner;
 
-    public MUDController(Player player) {
-        this.player = player;
-        this.running = true;
-        this.scanner = new Scanner(System.in);
+    public  MUDController(Player player) {
+        this.player=player;
+        this.running=true;
+        this.scanner =new Scanner(System.in );
     }
 
     public MUDController(Player player, Scanner scanner) {
         this.player = player;
-        this.scanner = scanner;
+        this.scanner =scanner;
     }
 
     public void runGameLoop() {
@@ -31,13 +31,13 @@ public class MUDController {
         String argument = (parts.length > 1) ? parts[1] : "";
 
         switch (command) {
-            case "look":
+            case "look" :
                 lookAround();
                 break;
             case "move":
                 move(argument);
                 break;
-            case "pick":
+            case "pick" :
                 if (argument.startsWith("up ")) {
                     pickUp(argument.substring(3));
                 } else {
@@ -53,7 +53,7 @@ public class MUDController {
             case "quit":
             case "exit":
                 running = false;
-                System.out.println("Выход из игры...");
+                System.out.println( "Выход из игры...");
                 break;
             default:
                 System.out.println("Неизвестная команда. Используйте 'help' для списка команд.");
@@ -61,15 +61,14 @@ public class MUDController {
     }
 
     private void lookAround() {
-        Room currentRoom = player.getCurrentRoom();
+        Room currentRoom =player.getCurrentRoom();
         if (currentRoom != null) {
-            System.out.println(currentRoom.getDescription());
-            System.out.println("Предметы в комнате: " + currentRoom.listItems());
+            System.out.println(currentRoom.getDescription() );
+            System.out.println( "Предметы в комнате: " + currentRoom.listItems());
         } else {
             System.out.println("Вы находитесь в пустоте...");
         }
     }
-
     private void move(String direction) {
         if (direction.isEmpty()) {
             System.out.println("Укажите направление (forward, back, left, right).");
@@ -107,10 +106,10 @@ public class MUDController {
     }
 
     private void showHelp() {
-        System.out.println("Доступные команды:");
+        System.out.println("Доступные команды:" );
         System.out.println("look - Осмотреть комнату");
         System.out.println("move <forward|back|left|right> - Перемещение");
-        System.out.println("pick up <item> - Взять предмет");
+        System.out.println("pick up <item> - Взять предмет" );
         System.out.println("inventory - Посмотреть инвентарь");
         System.out.println("help - Показать список команд");
         System.out.println("quit / exit - Выйти из игры");
@@ -124,7 +123,7 @@ public class MUDController {
 
         room1.connectRoom("forward", room2);
         room2.connectRoom("back", room1);
-        room2.connectRoom("left", room3);
+        room2.connectRoom("left", room3 );
         room3.connectRoom("right", room2);
 
         Item key = new Item("ключ");
