@@ -1,3 +1,0 @@
-interface IGameEntity {
-    void describe();
-}
