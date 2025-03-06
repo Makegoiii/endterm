@@ -1,4 +1,5 @@
 package Adapter;
-
-public class ChatService {
+public interface ChatService {
+    void sendMessage(String message);
 }
+
